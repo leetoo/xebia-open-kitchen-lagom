@@ -13,7 +13,6 @@ import com.xebia.webshop.order.api.{ConfirmOrderRequest, CreateOrderRequest, Ord
 import com.xebia.webshop.order.impl.POrder.{POrderLine, PSKU, PShippingInfo}
 import com.xebia.webshop.order.impl.POrderCommand.{AddPayment, AddShippingInformation, CreateOrder, GetOrder}
 import com.xebia.webshop.order.impl.POrderEvent.{OrderConfirmed, OrderCreated, OrderPaid, ShippingInformationAdded}
-import com.xebia.webshop.shoppingbag.impl.{ShoppingBagApplication, ShoppingBagSerializerRegistry}
 import play.api.LoggerConfigurator
 import play.api.libs.ws.ahc.AhcWSComponents
 

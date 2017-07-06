@@ -6,7 +6,6 @@ import com.lightbend.lagom.scaladsl.broker.TopicProducer
 import com.lightbend.lagom.scaladsl.persistence.PersistentEntityRegistry
 import com.xebia.webshop.order._
 import com.xebia.webshop.order.api.{ConfirmOrderRequest, CreateOrderRequest, Order, OrderService}
-import sun.plugin.dom.exception.InvalidStateException
 
 import scala.concurrent.{ExecutionContext, Future}
 
@@ -29,7 +28,7 @@ class OrderServiceImpl(persistentEntityRegistry: PersistentEntityRegistry)(impli
           Future.successful((message, event.offset))
         case POrderEvent.OrderConfirmed =>
           persistentEntityRegistry.refFor[OrderEntity](event.entityId).ask(POrderCommand.GetOrder).map { x =>
-            val shippingInfo = x.shippingInfo.getOrElse(throw new InvalidStateException("Shipping info is expected to be set when the order is confirmed"))
+            val shippingInfo = x.shippingInfo.getOrElse(throw new Exception("Shipping info is expected to be set when the order is confirmed"))
             val message = api.OrderEvent.OrderConfirmed(
               orderId = event.entityId,
               orderLines = x.orderLines.map(x => api.Order.OrderLine(api.Order.SKU(x.sku.id), x.amount)),
