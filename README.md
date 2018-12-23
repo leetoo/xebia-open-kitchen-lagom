@@ -1,3 +1,5 @@
+https://www.youtube.com/watch?v=f1YSSaI_J-c&t=29s
+
 # Step 1
 
 The **Shopping Bag Entity** service is currently missing functionality to remove items from an existing _shopping bag_, 
